@@ -1,5 +1,7 @@
 # bf-interpreter-in-c
 
+[![CodeFactor](https://www.codefactor.io/repository/github/xiongnemo/bf-interpreter-in-c/badge)](https://www.codefactor.io/repository/github/xiongnemo/bf-interpreter-in-c)
+
 A simple brainfxxk interpreter, implemented in pure C.
 
 ## Compile
