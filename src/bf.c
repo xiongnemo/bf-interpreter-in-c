@@ -5,11 +5,11 @@
 
 int main(void)
 {
-    __int8 data_array[BF_DATA_ARRAY_SIZE] = {0};
-    __int8 *data_pointer = data_array;
+    __int8_t data_array[BF_DATA_ARRAY_SIZE] = {0};
+    __int8_t *data_pointer = data_array;
     char bf_command[BF_COMMAND_BUFFER_SIZE] = {0};
-    __int32 bf_command_length = 0;
-    __int8 temp;
+    __int32_t bf_command_length = 0;
+    __int8_t temp;
     while (scanf("%c", &temp) != EOF)
     {
         switch (temp)
@@ -29,13 +29,13 @@ int main(void)
             break;
         }
     }
-    __int32 jump_position[BF_COMMAND_BUFFER_SIZE] = {0};
+    __int32_t jump_position[BF_COMMAND_BUFFER_SIZE] = {0};
 
     // do '[' and ']' analyses
     {
-        __int32 stack[30] = {0};
-        __int8 stack_pointer = 0;
-        for (__int32 pos = 0; pos < bf_command_length; pos++)
+        __int32_t stack[30] = {0};
+        __int8_t stack_pointer = 0;
+        for (__int32_t pos = 0; pos < bf_command_length; pos++)
         {
             int temp_pos;
             switch (bf_command[pos])
@@ -56,7 +56,7 @@ int main(void)
         }
     }
 
-    __int32 program_counter = 0x00000000;
+    __int32_t program_counter = 0x00000000;
     while (program_counter <= bf_command_length)
     {
         switch (bf_command[program_counter])
