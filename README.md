@@ -81,3 +81,30 @@ Input:
 
 ```
 
+### The Brainfuck to C interpretor
+
+from <https://gist.github.com/roachhd/dce54bec8ba55fb17d3a>
+
+```
+[/* bf2c.b
+* The Brainfuck to C interpretor
+* Katie ball
+*
+* NOTE: This was rushed and currently
+* it does not take well to any characters of input besides
+* the 8 standard brainfuck operators and newline and EOF.
+* So consequently, it will only interpret un-commented code.
+* Check my web site for a later release
+* that will probably have support for commented code.
+*/]
+```
+
+```bash
+./bf.out ./bf2c.bf > bf2c.bfout.c
+```
+
+Input:
+
+Your bf code, with an EOF in the end.
+
+The sample output (using the bf source as input) is here for you to check.
