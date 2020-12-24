@@ -3,14 +3,21 @@
 #define BF_DATA_ARRAY_SIZE 0x3FFF
 #define BF_COMMAND_BUFFER_SIZE 0x3FFF
 
-int main(void)
+int main(int argc, const char * argv[])
 {
+    FILE *fp;
+    if (argc != 2 || (fp = fopen(argv[1], "r")) == NULL) {
+        fprintf(stderr, "Usage: %s filename\n", argv[0]);
+        return 1;
+    }
+
     __int8_t data_array[BF_DATA_ARRAY_SIZE] = {0};
     __int8_t *data_pointer = data_array;
     char bf_command[BF_COMMAND_BUFFER_SIZE] = {0};
     __int32_t bf_command_length = 0;
     __int8_t temp;
-    while (scanf("%c", &temp) != EOF)
+
+    while ((temp = getc(fp)) != EOF && bf_command_length < BF_COMMAND_BUFFER_SIZE)
     {
         switch (temp)
         {
@@ -29,6 +36,8 @@ int main(void)
             break;
         }
     }
+    fclose(fp);
+
     __int32_t jump_position[BF_COMMAND_BUFFER_SIZE] = {0};
 
     // do '[' and ']' analyses
@@ -78,6 +87,7 @@ int main(void)
             break;
         case ',':
             *data_pointer = getchar();
+            getchar();
             break;
         case '[':
             if (*data_pointer == 0)
